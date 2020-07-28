@@ -1,0 +1,27 @@
+runtime: custom
+service: my-service-name
+env: flex
+threadsafe: true
+zones:
+- us-east1-b
+- us-east1-c
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
+network:
+  session_affinity: true
+automatic_scaling:
+  max_num_instances: 2
+env_variables:
+  ROOT_URL: https://meteor-template-deploy.wl.r.appspot.com
+  MONGO_URL: mongodb+srv://arslanr:Das_1090@cluster0.rbdff.mongodb.net/Cluster0?retryWrites=true&w=majority
+  MAIL_URL:
+skip_files:
+  - ^(.*/)?\.dockerignore$
+  - ^(.*/)?\npm-debug.log$
+  - ^(.*/)?\\yarn-error.log$
+  - ^(.*/)?\.git$
+  - ^(.*/)?\.hg$
+  - ^(.*/)?\.svn$
+  

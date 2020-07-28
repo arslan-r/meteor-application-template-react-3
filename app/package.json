@@ -33,6 +33,10 @@
     "eslint-utils": "^2.0.0"
   },
   "scripts": {
+    "cleanup": "rm -rf ../bundle/",
+    "dist": "npm run cleanup && meteor build ../ --directory --architecture os.linux.x86_64 --server-only",
+    "predeploy": "npm run dist && cp app.yaml ../bundle/ && cp Dockerfile ../bundle/",
+    "deploy": "npm run predeploy && (cd ../bundle && gcloud app deploy -q)",
     "start": "meteor --no-release-check --settings ../config/settings.development.json",
     "lint": "eslint --quiet --ext .jsx --ext .js ./imports"
   }
